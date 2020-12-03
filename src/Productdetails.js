@@ -75,5 +75,4 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = { fetchProducts };
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(ProductDetails);
 
-// export default ((withStyles(styles, { withTheme: true })(AppContainer))(withRouter(AppContainer)));
 export default (withRouter(AppContainer));
