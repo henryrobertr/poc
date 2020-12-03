@@ -1,16 +1,11 @@
 import React,{ Component } from 'react';
-
 import { withRouter } from "react-router";
-
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
-
 import Rating from '@material-ui/lab/Rating';
 import Typography from '@material-ui/core/Typography';
-
 import Skeleton from '@material-ui/lab/Skeleton';
-
 import { connect } from 'react-redux';
 import { fetchProducts } from './redux';
 
@@ -52,6 +47,7 @@ export class ProductDetails extends Component {
           </Card>
         </div>
         :
+        /* Skeleton */
         <Card style={{width:"1100px",margin:"0 auto"}}>
           <Skeleton animation="wave" variant="rect" style={{height:"140px",width:"100%"}} />
           <CardContent>
