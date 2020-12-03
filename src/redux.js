@@ -10,6 +10,7 @@ export const getProducts = (products) => ({
 
 export const clearProducts = () => ({ type: 'CLEAR_PRODUCTS' });
 
+/* Fetching Products */
 export const fetchProducts = (pageNo) => {
   return async dispatch => {
     try {
