@@ -1,21 +1,16 @@
 import React,{ Component } from 'react';
-
 import { withStyles } from "@material-ui/core/styles";
-
 import Card from '@material-ui/core/Card';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
-
 import Rating from '@material-ui/lab/Rating';
 import Pagination from '@material-ui/lab/Pagination';
-
 import Skeleton from '@material-ui/lab/Skeleton';
-
 import { Link } from 'react-router-dom';
-
 import { connect } from 'react-redux';
 import { fetchProducts } from './redux';
 
+/* Styles */
 const styles = (theme) => ({
   root : {
     maxWidth: 1100,
@@ -63,15 +58,18 @@ const styles = (theme) => ({
 });
 
 export class App extends Component {
+  //Setting default pageNo
   state = { pageNo: 1 };
 
   componentDidMount() {
     this.updateProductList(this.state.pageNo);
   }
 
+  //Update Product List
   updateProductList = (pageNo) => this.props.fetchProducts(pageNo);
 
   render() {
+    /* Props */
     const { classes, totPage, curPage } = this.props;
     return (
       <>
@@ -103,9 +101,11 @@ export class App extends Component {
             })
           }
         </div>
+        {/* Pagination */}
         <Pagination className={classes.pgn} count={totPage} page={curPage} onChange={(event, value) => this.updateProductList(value)} />
       </div>
        :
+       /* Skeleton */
         <div className={classes.root}> 
           <div className={classes.plOuter}> 
             <Card className={classes.card}>
@@ -141,7 +141,6 @@ const mapStateToProps = (state) => {
   let { products, pageNumber, pageSize, totalProducts } = state.products;
   return ({ prods: products, curPage: pageNumber, totPage: Math.round((totalProducts||60)/pageSize) });
 };
-
 const mapDispatchToProps = { fetchProducts };
 const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 
