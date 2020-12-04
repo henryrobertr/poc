@@ -15,7 +15,7 @@ export class ProductDetails extends Component {
   componentDidMount() {
     let { pageId, pKey } = this.props.match.params;
     this.setState({ pageNo: pageId, pKey: pKey },() => {
-      this.updateProductList(this.setState.pageNo);
+      this.updateProductList(this.state.pageNo);
     });
   }
 
